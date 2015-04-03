@@ -1,11 +1,11 @@
-# class Array
-  def merge_sort(list)
-    if list.length <= 1
-      return list
+class Array
+  def merge_sort
+    if self.length <= 1
+      return self
     else
-      middle = (list.length / 2)
-      left = merge_sort(list[0,middle])
-      right = merge_sort(list[middle,list.length])
+      middle = (self.length / 2)
+      left = self[0,middle].merge_sort
+      right = self[middle,self.length].merge_sort
     end
     merge_sorting(left, right)
   end
@@ -20,10 +20,4 @@
 
     result += left + right
   end
-# end
-
-test = [3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48]
-result = merge_sort(test)
-puts "--------"
-print "RESULT: "
-puts result.inspect
+end
