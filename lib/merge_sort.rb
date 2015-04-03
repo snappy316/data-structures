@@ -12,8 +12,6 @@ class Array
 
   def merge_sorting(left, right)
     result = []
-    return right if left.nil?
-    return left if right.nil?
     while left.size > 0 && right.size > 0
       result << (left[0] <= right[0] ? left.shift : right.shift)
     end
