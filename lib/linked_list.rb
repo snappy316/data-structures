@@ -53,7 +53,7 @@ class LinkedList
     result = []
     current = @head
     until current.nil?
-      result << current.val
+      result << current.val.to_s
       current = current.next
     end
 
