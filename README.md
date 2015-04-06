@@ -1,6 +1,6 @@
 # Data Structures
 
-This repo is a collection of data structures and algorithms I have written.
+This repo is a collection of data structures and algorithms implemented in Ruby.
 
 ## Insertion Sort
 
@@ -14,6 +14,16 @@ It's been a while since I've worked with recursion, so this one took a bit of ti
 
 We start out by recursively breaking the array down so that each element is in it's own individual partion. This is in the `merge_sort` method. Once they're broken out, we start working our way back up the recursion-tree, and by calling the `merge_sorting` method we merge two adjacent partitions together. While there are still numbers in each adjacent partition, we compare the first value of each partition with each other, and place the lowest value in a temporary array. When either partition no longer has any values, we place the remaining values in the other array into the temporary array, and return the temporary array. This will climb back up the recursion tree, and at the end will return the completely sorted array.
 
+## Linked Lists
+
+Linked lists are a collection of nodes. Each node has a value, and a reference to the next node in the list. I created the `Node` as a Struct, with `val` and `next` attributes. Theoretically, if you just created a bunch of nodes that referenced each other, you would have a kind of "Linked List"...but the power of linked lists comes with the `LinkedList` class. The class is initialized by passing in the head `node`, which is stored in `@head`. By explicitly defining the head node, the list can find all other nodes in the list through the head's next node.
+
+The `LinkedList` class has several methods:
+- `insert(new_node)` - inserts `new_node` at the beginning of the list. Given a `new_node`, it will set `new_node`'s `next` value to be the current value of `@head`, and then change `@head` to be `new_node`.
+- `search(value)` - will look through each node in the list, looking for `value` in each node's `val` attribute. If it finds the value, it will return that node; if it doesn't find the value, it will return `nil`.
+- `remove(node)` - removes `node` from the list, and returns it. It first `search`es through the list to see if the value even exists; if it doesn't, it returns `nil` right away. Otherwise, it will go through each node, and see if the next node's `val` is the value of the node we're searching for. If it is, we copy out the next node so we can return it, then we set the current node's `next` to `next.next` to skip the deleted node.
+- `to_s` - prints a comma-separated list of all node values. It goes through all the nodes in the list, and adds each node's value to an array. Then, it returns the array's values joined together with a comma and a space.
+
 ## Benchmarking
 
 Benchmarking of randomly sorted, nearly sorted, and reversed arrays is included in `lib/benchmark`. It generates three arrays with 10,000 elements each: a randomly sorted array, a sorted array, and a reversed array. It will benchmark each sort against each array.
@@ -21,5 +31,7 @@ Benchmarking of randomly sorted, nearly sorted, and reversed arrays is included 
 ## Collaborators and Sources
 
 [VisuAlgo - Sorting](http://visualgo.net/sorting.html)
+[VisuAlgo - Linked List](http://visualgo.net/list.html)
 [Mark Miyashita - Merge Sort](http://markmiyashita.com/interviews/problems/merge_sort/)
 [Wikibooks - Algorithm Implementation / Sorting / Merge sort](http://en.wikibooks.org/wiki/Algorithm_Implementation/Sorting/Merge_sort#Ruby)
+[Wikipedia - Linked list](http://en.wikipedia.org/wiki/Linked_list)
