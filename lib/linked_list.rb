@@ -27,19 +27,23 @@ class LinkedList
   end
 
   def remove(node)
-    return nil if search(node.val).nil?
-
-    found = false
-    current = @head
     result = nil
 
-    until found || current.next.nil?
-      if current.next.val == node.val
-        result = current.next
-        current.next = current.next.next
-        found = true
-      else
-        current = current.next
+    if @head.val == node.val
+      result = @head
+      @head = @head.next
+    else
+      found = false
+      current = @head
+
+      until found || current.next.nil?
+        if current.next.val == node.val
+          result = current.next
+          current.next = current.next.next
+          found = true
+        else
+          current = current.next
+        end
       end
     end
 
