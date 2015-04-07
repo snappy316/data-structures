@@ -13,20 +13,17 @@ class LinkedList
   end
 
   def search(val)
-    found = false
-    current = @head
-    result = nil
+    if @head.val == val
+      @head.val
+    else
+      current = @head
 
-    until found || current.nil?
-      if current.val == val
-        found = true
-        result = current.val
-      else
+      until current.nil? || current.val == val
         current = current.next
       end
-    end
 
-    current
+      current
+    end
   end
 
   def remove(node)
