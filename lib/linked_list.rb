@@ -13,36 +13,37 @@ class LinkedList
   end
 
   def search(val)
-    found = false
-    current = @head
-    result = nil
+    if @head.val == val
+      @head.val
+    else
+      current = @head
 
-    until found || current.nil?
-      if current.val == val
-        found = true
-        result = current.val
-      else
+      until current.nil? || current.val == val
         current = current.next
       end
-    end
 
-    current
+      current
+    end
   end
 
   def remove(node)
-    return nil if search(node.val).nil?
-
-    found = false
-    current = @head
     result = nil
 
-    until found || current.next.nil?
-      if current.next.val == node.val
-        result = current.next
-        current.next = current.next.next
-        found = true
-      else
-        current = current.next
+    if @head.val == node.val
+      result = @head
+      @head = @head.next
+    else
+      found = false
+      current = @head
+
+      until found || current.next.nil?
+        if current.next.val == node.val
+          result = current.next
+          current.next = current.next.next
+          found = true
+        else
+          current = current.next
+        end
       end
     end
 
