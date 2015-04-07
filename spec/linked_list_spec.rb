@@ -43,6 +43,12 @@ describe 'Searching' do
     search = @list.search(102)
     search.must_be_nil
   end
+
+  it 'returns if we are looking for the first node' do
+    setup_nodes
+    search = @list.search(12)
+    search.must_equal(12)
+  end
 end
 
 describe 'Removing' do
@@ -57,6 +63,13 @@ describe 'Removing' do
     setup_nodes
     removed = @list.remove(Node.new(102))
     removed.must_be_nil
+  end
+
+  it 'returns the first object if we are looking for the first node' do
+    setup_nodes
+    removed = @list.remove(@node12)
+    removed.val.must_equal(12)
+    @list.head.must_equal(@node32)
   end
 end
 
