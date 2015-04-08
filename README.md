@@ -24,6 +24,15 @@ The `LinkedList` class has several methods:
 - `remove(node)` - removes `node` from the list, and returns it. It first `search`es through the list to see if the value even exists; if it doesn't, it returns `nil` right away. Otherwise, it will go through each node, and see if the next node's `val` is the value of the node we're searching for. If it is, we copy out the next node so we can return it, then we set the current node's `next` to `next.next` to skip the deleted node.
 - `to_s` - prints a comma-separated list of all node values. It goes through all the nodes in the list, and adds each node's value to an array. Then, it returns the array's values joined together with a comma and a space.
 
+## Queue
+
+Queues are a collection of objects, that are first-in, first-out (FIFO). I implemented them using nodes, where each node has a value and a next pointer to the next node. The queue keeps track of it's first and last values by using `@head` and `@tail` pointers respectively.
+
+The `Queue` class has three methods:
+- `enqueue(node)` - adds the node to the end of the queue by setting the `@tail` pointer to `node`. If it is an empty queue, it also sets the `@head` pointer to `node` as well.
+- `dequeue` - removes and returns the node that `@head` is pointing to, and sets `@head` to be the next node in line. If the queue is empty, it will raise an exception.
+- `size` - returns the size of the queue. The `@size` instance variable is initialized with a value of 0, is incremented by one in the `enqueue` method, and is decremented by one in the `dequeue` method.
+
 ## Benchmarking
 
 Benchmarking of randomly sorted, nearly sorted, and reversed arrays is included in `lib/benchmark`. It generates three arrays with 10,000 elements each: a randomly sorted array, a sorted array, and a reversed array. It will benchmark each sort against each array.
