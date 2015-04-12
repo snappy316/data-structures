@@ -33,9 +33,21 @@ The `Queue` class has three methods:
 - `dequeue` - removes and returns the node that `@head` is pointing to, and sets `@head` to be the next node in line. If the queue is empty, it will raise an exception.
 - `size` - returns the size of the queue. The `@size` instance variable is initialized with a value of 0, is incremented by one in the `enqueue` method, and is decremented by one in the `dequeue` method.
 
+## Hash Tables
+
+Hash Tables are a way to map keys to values. By setting up a finite number of buckets in which to store the values, it is theoretically possible to store an infinite number of values in the finite number of buckets. This is accomplished by hashing the key to determine which bucket the value will be stored in. Assuming there will be collisions within the buckets, the buckets take the form of another data structure (in this instance, a Linked List) to store all of the values.
+
+The `Hashtable` class has four different methods:
+- `initialize(tableSize)` - initializes a "buckets" array of `tableSize` length, each spot with it's own `LinkedList`
+- `set(key, value)` - hashes the `key` to determine which bucket to put it in, then inserts the pair into the bucket's `LinkedList`.
+- `get(key)` - hashes the `key` to determine which bucket the value will be in, then searches that bucket's `LinkedList` for the value.
+- `private hash(key)` - runs the key through an MD5 hash, converts it to a hexadecimal format so that it is all integers, and modulos it by the total amount of buckets available.
+
 ## Benchmarking
 
-Benchmarking of randomly sorted, nearly sorted, and reversed arrays is included in `lib/benchmark`. It generates three arrays with 10,000 elements each: a randomly sorted array, a sorted array, and a reversed array. It will benchmark each sort against each array.
+Benchmarking of randomly sorted, nearly sorted, and reversed arrays for Insertion Sort and Merge Sort is included in `lib/benchmark`. It generates three arrays with 10,000 elements each: a randomly sorted array, a sorted array, and a reversed array. It will benchmark each sort against each array.
+
+Benchmarking for Hashtables is included as a Raketask (`rake bmhashtable`), and in `spec/bm_hashtable`. It loads the dictionary from `/usr/share/dict/words` into an array, and then benchmarks adding each word to the Hash Table, and getting each word from the Hash Table.
 
 ## Collaborators and Sources
 
