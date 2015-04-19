@@ -33,6 +33,10 @@ The `Queue` class has three methods:
 - `dequeue` - removes and returns the node that `@head` is pointing to, and sets `@head` to be the next node in line. If the queue is empty, it will raise an exception.
 - `size` - returns the size of the queue. The `@size` instance variable is initialized with a value of 0, is incremented by one in the `enqueue` method, and is decremented by one in the `dequeue` method.
 
+## Binary Tree
+
+Binary Trees are a type of tree data structure, where each node has 0, 1, or 2 children. I implemented them with nodes, where each node has a value and a pointer to the left and right child. Each node is initialized with a `NilNode` in the left and right pointers, which are overwritten when a new value is added.
+
 ## Benchmarking
 
 Benchmarking of randomly sorted, nearly sorted, and reversed arrays is included in `lib/benchmark`. It generates three arrays with 10,000 elements each: a randomly sorted array, a sorted array, and a reversed array. It will benchmark each sort against each array.
