@@ -1,11 +1,10 @@
-require_relative './hash_linked_list'
 require 'digest'
 
 class Hashtable
   attr_reader :size
 
-  def initialize(tableSize)
-    @table = Array.new(tableSize).map!{ |bucket| LinkedList.new }
+  def initialize(tableSize, storage_class)
+    @table = Array.new(tableSize).map!{ |bucket| storage_class.new }
     @size = 0
     @TABLESIZE = tableSize
   end
@@ -30,6 +29,6 @@ class Hashtable
   def hash(key)
     md5 = Digest::MD5.new
     md5 << key
-    md5.hexdigest.hex  % @TABLESIZE
+    md5.hexdigest.hex % @TABLESIZE
   end
 end
